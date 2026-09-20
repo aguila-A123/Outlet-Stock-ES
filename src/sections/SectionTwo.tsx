@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Shirt, Dumbbell, ChefHat, Home, WashingMachine, Sparkles } from 'lucide-react';
 
 const categoriesData = {
   badge: 'Servicios',
@@ -30,33 +29,8 @@ type CategoryItem = {
 };
 
 type VisualConfig = {
-  icon: React.ComponentType<{ className?: string }>;
-  gradient: string;
-  accent: string;
-  secondary: string;
+  image: string;
 };
-
-function ShoeIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="m15 10.42 4.8-5.07" />
-      <path d="M19 18h3" />
-      <path d="M9.5 22 21.414 9.415A2 2 0 0 0 21.2 6.4l-5.61-4.208A1 1 0 0 0 14 3v2a2 2 0 0 1-1.394 1.906L8.677 8.053A1 1 0 0 0 8 9c-.155 6.393-2.082 9-4 9a2 2 0 0 0 0 4h14" />
-    </svg>
-  );
-}
 
 function getCategoryDelay(idx: number): number {
   return idx * 0.09;
@@ -66,52 +40,31 @@ function getVisualConfig(title: string): VisualConfig {
   switch (title) {
     case 'Ropa Casual':
       return {
-        icon: Shirt,
-        gradient: 'from-[#cfe7ff] via-[#f6fbff] to-transparent',
-        accent: 'bg-[#8bbcf5]',
-        secondary: 'bg-[#dbeafe]',
+        image: 'https://iili.io/nTUZAbt.jpg',
       };
     case 'Ropa Deporte':
       return {
-        icon: Dumbbell,
-        gradient: 'from-[#d7f8ef] via-[#f4fffb] to-transparent',
-        accent: 'bg-[#61d2b0]',
-        secondary: 'bg-[#d6faef]',
+        image: 'https://iili.io/nTgQ2Lu.jpg',
       };
     case 'Calzado Casual':
       return {
-        icon: ShoeIcon,
-        gradient: 'from-[#efe2ff] via-[#fbf7ff] to-transparent',
-        accent: 'bg-[#b798ea]',
-        secondary: 'bg-[#efe4ff]',
+        image: 'https://iili.io/nTgbdyQ.jpg',
       };
     case 'Menaje Cocina':
       return {
-        icon: ChefHat,
-        gradient: 'from-[#ffe6cf] via-[#fff8f2] to-transparent',
-        accent: 'bg-[#f6ab62]',
-        secondary: 'bg-[#ffe8d3]',
+        image: 'https://iili.io/nTrPU8B.md.jpg',
       };
     case 'Menaje Hogar':
       return {
-        icon: Home,
-        gradient: 'from-[#dff2ff] via-[#f6fbff] to-transparent',
-        accent: 'bg-[#84bfe4]',
-        secondary: 'bg-[#dff2ff]',
+        image: 'https://iili.io/nTrQygf.jpg',
       };
     case 'Electrodomésticos':
       return {
-        icon: WashingMachine,
-        gradient: 'from-[#dbe7ff] via-[#f7faff] to-transparent',
-        accent: 'bg-[#7e9ee8]',
-        secondary: 'bg-[#dde8ff]',
+        image: 'https://iili.io/nT42r12.jpg',
       };
     default:
       return {
-        icon: Sparkles,
-        gradient: 'from-[#ffe0ef] via-[#fff6fb] to-transparent',
-        accent: 'bg-[#ee8cb9]',
-        secondary: 'bg-[#ffe3f0]',
+        image: 'https://iili.io/nT4KtXs.jpg',
       };
   }
 }
@@ -122,10 +75,10 @@ function runDevChecks() {
   console.assert(getCategoryDelay(3) === 0.27, 'Delay for fourth card should be 0.27');
   console.assert(categoriesData.items.length === 7, 'Expected 7 category cards');
   console.assert(categoriesData.items[2].title === 'Calzado Casual', 'Third card should be Calzado Casual');
-  console.assert(getVisualConfig('Ropa Casual').icon === Shirt, 'Ropa Casual should use Shirt icon');
-  console.assert(getVisualConfig('Electrodomésticos').icon === WashingMachine, 'Electrodomésticos should use WashingMachine icon');
-  console.assert(getVisualConfig('Calzado Casual').icon === ShoeIcon, 'Calzado Casual should use ShoeIcon');
-  console.assert(getVisualConfig('Otro').icon === Sparkles, 'Fallback icon should be Sparkles');
+  console.assert(getVisualConfig('Ropa Casual').image.includes('nTUZAbt'), 'Ropa Casual should use its requested image');
+  console.assert(getVisualConfig('Electrodomésticos').image.includes('nT42r12'), 'Electrodomésticos should use its requested image');
+  console.assert(getVisualConfig('Calzado Casual').image.includes('nTgbdyQ'), 'Calzado Casual should use its requested image');
+  console.assert(getVisualConfig('Otro').image.includes('nT4KtXs'), 'Fallback should use the Higiene Personal image');
 }
 
 runDevChecks();
@@ -145,23 +98,25 @@ function FadeIn({ children, delay = 0, className = '' }: FadeInProps) {
 }
 
 function CategoryVisual({ title }: { title: string }) {
-  const { icon: Icon, gradient, accent, secondary } = getVisualConfig(title);
+  const { image } = getVisualConfig(title);
 
   return (
-    <div className="pointer-events-none absolute inset-y-0 right-0 w-[42%] overflow-hidden">
-      <div className={`absolute inset-y-0 right-0 w-full bg-gradient-to-l ${gradient}`} />
-      <div className="absolute inset-y-0 left-0 w-20 bg-[linear-gradient(90deg,rgba(255,255,255,0.98),rgba(255,255,255,0.86),rgba(255,255,255,0.22),rgba(255,255,255,0))]" />
-
-      <div className="absolute right-[-12%] top-1/2 h-40 w-40 -translate-y-1/2 rounded-full bg-white/70 blur-2xl" />
-      <div className={`absolute right-6 top-8 h-16 w-16 rounded-[22px] ${secondary} opacity-95 shadow-[0_16px_30px_rgba(255,255,255,0.45)]`} />
-      <div className={`absolute right-16 top-24 h-24 w-24 rounded-[28px] ${accent} opacity-80`} />
-      <div className={`absolute bottom-6 right-10 h-14 w-14 rounded-2xl ${secondary} opacity-95`} />
-
-      <div className="absolute inset-y-0 right-5 flex items-center justify-center">
-        <div className="rounded-[28px] bg-white/72 p-5 shadow-[0_18px_40px_rgba(15,23,42,0.10)] backdrop-blur-sm ring-1 ring-white/60">
-          <Icon className="h-10 w-10 text-slate-700" />
-        </div>
-      </div>
+    <div
+      className="pointer-events-none absolute inset-y-0 right-0 overflow-hidden"
+      style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '48%', borderTopRightRadius: 30, borderBottomRightRadius: 30 }}
+    >
+      <img
+        src={image}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="absolute inset-y-0 right-0"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.82) 18%, rgba(255,255,255,0.28) 52%, rgba(255,255,255,0) 78%)' }}
+      />
     </div>
   );
 }
@@ -175,7 +130,8 @@ function CategoryCard({ item, idx }: { item: CategoryItem; idx: number }) {
         viewport={{ once: true, amount: 0.22 }}
         transition={{ duration: 0.72, delay: getCategoryDelay(idx), ease: [0.22, 1, 0.36, 1] }}
         whileHover={{ y: -6 }}
-        className="group relative flex h-full flex-col overflow-hidden rounded-[30px] border border-white/70 bg-white/80 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur"
+        className="group relative flex h-full flex-col overflow-hidden rounded-[30px] border border-white/70 bg-white/90 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur"
+        style={{ borderColor: 'rgba(22, 86, 160, 0.15)' }}
       >
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0.34))]" />
         <CategoryVisual title={item.title} />

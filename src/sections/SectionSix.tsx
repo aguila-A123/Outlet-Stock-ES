@@ -7,7 +7,7 @@ const footerData = {
     name: 'Outlet Stock',
     subtitle: 'Subastas Escudero',
     description:
-      'Somos una empresa familiar con más de 25 años de experiencia en la compra-venta de mercancías.',
+      'Somos una empresa familiar con más de 25 años de experiencia comprando mercancías.',
   },
   links: [
     { label: 'Inicio', href: '#inicio' },
@@ -63,7 +63,7 @@ function FadeIn({ children, delay = 0, className = '' }: FadeInProps) {
 function FooterLogo() {
   return (
     <img
-      src="https://iili.io/CqMRRsf.png"
+      src="https://iili.io/nFkULS2.png"
       alt="Logo Outlet Stock"
       className="h-24 w-auto object-contain"
       loading="lazy"

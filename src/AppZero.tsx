@@ -10,6 +10,9 @@ import {
   Shield,
   Zap,
   Mail,
+  Package2,
+  Boxes,
+  Truck,
 } from 'lucide-react';
 
 type CardProps = HTMLAttributes<HTMLDivElement>;
@@ -30,9 +33,10 @@ type HeroSlide = {
   text: string;
   cta: string;
   backgroundImage?: string;
+  featuredOverview?: boolean;
 };
 
-const logoUrl = 'https://iili.io/Cq9QdEg.png';
+const logoUrl = 'https://iili.io/nFkULS2.png';
 
 const siteConfig: {
   nav: NavItem[];
@@ -46,26 +50,27 @@ const siteConfig: {
   ],
   heroSlides: [
     {
-      eyebrow: 'Más de 25 años de experiencia',
+      eyebrow: '',
       title: 'Outlet Stock',
-      subtitle: 'Subastas Escudero',
-      text: 'Ofrecemos soluciones rápidas y seguras en la adquisición y venta de mercancías: electrodomésticos, hogar, moda, calzado, deporte, higiene personal y mucho más.',
-      cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/CqVXcTG.png',
+      subtitle: 'Gestión y Distribución',
+      text: '',
+      cta: '',
+      backgroundImage: 'https://iili.io/nTUaVEP.jpg',
+      featuredOverview: true,
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Menaje de Hogar',
       subtitle: 'Stocks, lotes y oportunidades',
-      text: 'Compramos colchones, edredones, mantas, sábanas y artículos para el hogar con procesos claros y ágiles.',
+      text: 'Colchones, edredones, mantas y ropa de hogar en lotes seleccionados.',
       cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/CqViH11.png',
+      backgroundImage: 'https://iili.io/nFvdeu1.jpg',
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Ropa Casual',
       subtitle: 'Señora & Caballero',
-      text: 'Si buscas eficiencia, compromiso y experiencia, estás en el lugar correcto para comprar o vender stock.',
+      text: 'Moda casual para señora y caballero, disponible en stocks y lotes.',
       cta: 'Contactar ahora',
       backgroundImage: 'https://iili.io/CqVDhTg.png',
     },
@@ -73,31 +78,31 @@ const siteConfig: {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Calzado',
       subtitle: 'Estilo para cada ocasión',
-      text: 'Disponemos de lotes de calzado para señora, caballero y niño, con variedad de estilos y grandes oportunidades.',
+      text: 'Calzado para señora, caballero y niño en lotes variados.',
       cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/ndYyPDl.jpg',
+      backgroundImage: 'https://iili.io/nFv3g7p.jpg',
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Menaje de Cocina',
       subtitle: 'Todo para tu cocina',
-      text: 'Compramos y vendemos vajillas, baterías, utensilios y accesorios de cocina en lotes y stocks seleccionados.',
+      text: 'Vajillas, baterías y utensilios de cocina en stocks seleccionados.',
       cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/ndaJPDv.md.jpg',
+      backgroundImage: 'https://iili.io/nFvqbV9.jpg',
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Higiene Personal',
       subtitle: 'Cuidado para cada día',
-      text: 'Productos de higiene y cuidado personal con variedad, calidad y oportunidades para particulares y empresas.',
+      text: 'Productos de higiene y cuidado personal para empresas y particulares.',
       cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/nda2dkg.md.jpg',
+      backgroundImage: 'https://iili.io/nFvAxUP.jpg',
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Herramientas Eléctricas y Manuales',
       subtitle: 'Soluciones para cada proyecto',
-      text: 'Herramientas eléctricas y manuales para profesionales y particulares, disponibles en lotes y stocks variados.',
+      text: 'Herramientas eléctricas y manuales para profesionales y particulares.',
       cta: 'Contactar ahora',
       backgroundImage: 'https://iili.io/nda3FS9.jpg',
     },
@@ -105,23 +110,38 @@ const siteConfig: {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Electrodomésticos',
       subtitle: 'Tecnología para el hogar',
-      text: 'Electrodomésticos para facilitar el día a día, con opciones prácticas y oportunidades a precios competitivos.',
+      text: 'Electrodomésticos prácticos para el hogar a precios competitivos.',
       cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/nda36Ou.webp',
+      backgroundImage: 'https://iili.io/nFv099V.jpg',
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Muebles',
       subtitle: 'Funcionalidad y estilo',
-      text: 'Muebles para distintos espacios del hogar y el negocio, disponibles en lotes, stocks y oportunidades únicas.',
+      text: 'Muebles para el hogar y el negocio en lotes y oportunidades únicas.',
       cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/ndaFOkF.jpg',
+      backgroundImage: 'https://iili.io/nFvN8PV.jpg',
     },
   ],
 };
 
 const heroGradient =
   'bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.07),transparent_24%),linear-gradient(135deg,rgba(13,21,97,0.62)_0%,rgba(22,86,160,0.44)_28%,rgba(21,159,188,0.26)_55%,rgba(197,20,107,0.18)_100%)]';
+
+const tradingCountries = [
+  { image: 'https://iili.io/nfVaoSn.md.jpg', name: 'España' },
+  { image: 'https://iili.io/nfVavRa.md.jpg', name: 'Alemania' },
+  { image: 'https://iili.io/nfVcbYF.md.jpg', name: 'Países Bajos' },
+  { image: 'https://iili.io/nfVllTb.md.jpg', name: 'Bélgica' },
+  { image: 'https://iili.io/nfV0oS1.md.jpg', name: 'Francia' },
+  { image: 'https://iili.io/nfVGclV.md.jpg', name: 'Portugal' },
+];
+
+const purchasingFormats = [
+  { label: 'Compramos por palets', icon: Package2 },
+  { label: 'Lotes', icon: Boxes },
+  { label: 'Camiones completos', icon: Truck },
+];
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
@@ -248,12 +268,12 @@ function Hero() {
   const dots = siteConfig.heroSlides.map((_, i) => i);
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
+    const timer = window.setTimeout(() => {
       setIndex((prev) => getNextSlideIndex(prev, siteConfig.heroSlides.length));
-    }, 4500);
+    }, index === 0 ? 10000 : 6000);
 
-    return () => window.clearInterval(timer);
-  }, []);
+    return () => window.clearTimeout(timer);
+  }, [index]);
 
   return (
     <section id="inicio" className="relative scroll-mt-24 overflow-hidden bg-[#0D1561] text-white">
@@ -262,20 +282,20 @@ function Hero() {
           <motion.div
             key={slide.backgroundImage}
             initial={{ opacity: 0, scale: 1.03 }}
-            animate={{ opacity: 0.55, scale: 1 }}
+            animate={{ opacity: slide.featuredOverview ? 1 : 0.55, scale: 1 }}
             exit={{ opacity: 0, scale: 1.015 }}
             transition={{ duration: 0.9, ease: 'easeInOut' }}
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${slide.backgroundImage})` }}
+            style={{ backgroundImage: `url(${slide.backgroundImage})`, backgroundPosition: slide.featuredOverview ? 'right center' : 'center' }}
           />
         )}
       </AnimatePresence>
 
-      <div className={`absolute inset-0 ${heroGradient}`} />
+      <div className={slide.featuredOverview ? 'hero-featured-gradient absolute inset-0' : `absolute inset-0 ${heroGradient}`} />
       <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0))] lg:block" />
 
-      <div className="relative mx-auto grid max-w-[1500px] gap-10 px-4 py-20 md:px-7 lg:px-10 lg:py-28 xl:px-12">
-        <div className="max-w-3xl">
+      <div className="relative mx-auto max-w-[1500px] px-4 py-16 md:px-7 lg:px-10 lg:py-24 xl:px-12">
+        <div className={slide.featuredOverview ? 'max-w-[1000px]' : 'max-w-3xl'}>
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
@@ -284,9 +304,11 @@ function Hero() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.45 }}
             >
-              <div className="mb-5 inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-white">
-                {slide.eyebrow}
-              </div>
+              {slide.eyebrow && (
+                <div className="mb-5 inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-white">
+                  {slide.eyebrow}
+                </div>
+              )}
               <h1 className="text-4xl font-black tracking-[-0.04em] text-white drop-shadow-[0_10px_30px_rgba(2,6,23,0.28)] md:text-6xl xl:text-[72px]">
                 <span className="bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(231,244,255,0.96)_48%,rgba(191,226,255,0.92)_100%)] bg-clip-text text-transparent">
                   {slide.title}
@@ -295,14 +317,54 @@ function Hero() {
               <p className="mt-3 text-[1.2rem] font-semibold uppercase tracking-[0.18em] text-sky-100/90 md:text-[1.35rem]">
                 {slide.subtitle}
               </p>
-              <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">{slide.text}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="rounded-2xl bg-[#CCD71F] text-[#0D1561] hover:bg-[#b8c41b]">
-                  <a href="#contacto">{slide.cta}</a>
-                </Button>
-              </div>
+              {slide.text && (
+                <p className="mt-6 max-w-2xl text-lg font-semibold leading-8 text-white drop-shadow-[0_2px_10px_rgba(2,6,23,0.55)] md:text-xl md:leading-9">
+                  {slide.text}
+                </p>
+              )}
+              {slide.cta && (
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Button asChild size="lg" className="rounded-2xl bg-[#CCD71F] text-[#0D1561] hover:bg-[#b8c41b]">
+                    <a href="#contacto">{slide.cta}</a>
+                  </Button>
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
+
+          {slide.featuredOverview && (
+            <motion.div
+              key="outlet-stock-overview"
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.55, delay: 0.12 }}
+              className="outlet-stock-overview"
+            >
+              <div className="outlet-country-grid">
+                  {tradingCountries.map((country) => (
+                    <div key={country.name} className="outlet-country">
+                      <img src={country.image} alt={`Bandera de ${country.name}`} className="outlet-country-flag" />
+                      <span className="outlet-country-name">{country.name}</span>
+                    </div>
+                  ))}
+              </div>
+
+              <div className="outlet-format-grid">
+                  {purchasingFormats.map((format) => {
+                    const Icon = format.icon;
+                    return (
+                      <div key={format.label} className="outlet-format">
+                        <Icon className="outlet-format-icon" strokeWidth={2} />
+                        <span className="outlet-format-label">{format.label}</span>
+                      </div>
+                    );
+                  })}
+              </div>
+
+              <p className="outlet-overview-footer">Compramos por palets · Lotes · Camiones completos</p>
+              <p className="outlet-overview-footer outlet-overview-footer-secondary">Grandes cantidades · Mejores precios</p>
+            </motion.div>
+          )}
 
           <div className="mt-10 flex items-center gap-3">
             {dots.map((dot) => (

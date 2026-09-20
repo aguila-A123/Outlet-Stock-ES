@@ -4,8 +4,8 @@ import { ShieldCheck, Sparkles, Star } from 'lucide-react';
 
 const aboutData = {
   title: 'Acerca de Outlet Stock',
-  heading: 'Empresa de compra-venta de mercancías.',
-  text: 'Somos una empresa familiar con más de 25 años de experiencia en la compra-venta de mercancías. Con cuatro delegaciones estratégicas en Cantabria, ofrecemos un servicio ágil, cercano y de alta calidad a empresas y particulares.',
+  heading: 'Compramos mercancías.',
+  text: 'Somos una empresa familiar con más de 25 años de experiencia comprando mercancías. Con cuatro delegaciones estratégicas en Cantabria, ofrecemos un servicio ágil, cercano y de alta calidad a empresas y particulares.',
   mission:
     'Ofrecer a nuestros clientes productos de calidad al mejor precio, dando una segunda vida a stocks, excedentes y artículos descatalogados.',
   mission2:

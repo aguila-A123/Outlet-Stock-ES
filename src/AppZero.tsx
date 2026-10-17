@@ -11,7 +11,6 @@ import {
   Zap,
   Mail,
   Package2,
-  Boxes,
   Truck,
 } from 'lucide-react';
 
@@ -52,7 +51,7 @@ const siteConfig: {
     {
       eyebrow: '',
       title: 'Outlet Stock',
-      subtitle: 'Gestión y Distribución',
+      subtitle: '',
       text: '',
       cta: '',
       backgroundImage: 'https://iili.io/nTUaVEP.jpg',
@@ -61,24 +60,32 @@ const siteConfig: {
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Menaje de Hogar',
-      subtitle: 'Stocks, lotes y oportunidades',
-      text: 'Colchones, edredones, mantas y ropa de hogar en lotes seleccionados.',
+      subtitle: 'Stocks y oportunidades',
+      text: 'Vajillas, ollas, utensilios de cocina y todo el menaje para tu hogar',
       cta: 'Contactar ahora',
       backgroundImage: 'https://iili.io/nFvdeu1.jpg',
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
+      title: 'Colchones',
+      subtitle: 'Comodidad y descanso',
+      text: 'Colchones de distintas medidas para un descanso cómodo.',
+      cta: 'Contactar ahora',
+      backgroundImage: './colchones.jpeg',
+    },
+    {
+      eyebrow: 'Más de 25 años de experiencia',
       title: 'Ropa Casual',
       subtitle: 'Señora & Caballero',
-      text: 'Moda casual para señora y caballero, disponible en stocks y lotes.',
+      text: 'Moda casual para señora y caballero.',
       cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/CqVDhTg.png',
+      backgroundImage: './Ropa_Casual.jpeg',
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Calzado',
       subtitle: 'Estilo para cada ocasión',
-      text: 'Calzado para señora, caballero y niño en lotes variados.',
+      text: 'Calzado para caballero y señora casual y deportivo',
       cta: 'Contactar ahora',
       backgroundImage: 'https://iili.io/nFv3g7p.jpg',
     },
@@ -86,7 +93,7 @@ const siteConfig: {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Menaje de Cocina',
       subtitle: 'Todo para tu cocina',
-      text: 'Vajillas, baterías y utensilios de cocina en stocks seleccionados.',
+      text: 'Vajillas, baterías y utensilios de cocina.',
       cta: 'Contactar ahora',
       backgroundImage: 'https://iili.io/nFvqbV9.jpg',
     },
@@ -94,7 +101,7 @@ const siteConfig: {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Higiene Personal',
       subtitle: 'Cuidado para cada día',
-      text: 'Productos de higiene y cuidado personal para empresas y particulares.',
+      text: 'Productos de higiene y cuidado personal.',
       cta: 'Contactar ahora',
       backgroundImage: 'https://iili.io/nFvAxUP.jpg',
     },
@@ -102,15 +109,15 @@ const siteConfig: {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Herramientas Eléctricas y Manuales',
       subtitle: 'Soluciones para cada proyecto',
-      text: 'Herramientas eléctricas y manuales para profesionales y particulares.',
+      text: 'Herramientas eléctricas y manuales.',
       cta: 'Contactar ahora',
-      backgroundImage: 'https://iili.io/nda3FS9.jpg',
+      backgroundImage: './Herramientas.jpeg',
     },
     {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Electrodomésticos',
       subtitle: 'Tecnología para el hogar',
-      text: 'Electrodomésticos prácticos para el hogar a precios competitivos.',
+      text: 'Electrodomésticos prácticos para el hogar.',
       cta: 'Contactar ahora',
       backgroundImage: 'https://iili.io/nFv099V.jpg',
     },
@@ -118,7 +125,7 @@ const siteConfig: {
       eyebrow: 'Más de 25 años de experiencia',
       title: 'Muebles',
       subtitle: 'Funcionalidad y estilo',
-      text: 'Muebles para el hogar y el negocio en lotes y oportunidades únicas.',
+      text: 'Muebles para el hogar y el negocio con oportunidades únicas.',
       cta: 'Contactar ahora',
       backgroundImage: 'https://iili.io/nFvN8PV.jpg',
     },
@@ -130,16 +137,13 @@ const heroGradient =
 
 const tradingCountries = [
   { image: 'https://iili.io/nfVaoSn.md.jpg', name: 'España' },
-  { image: 'https://iili.io/nfVavRa.md.jpg', name: 'Alemania' },
-  { image: 'https://iili.io/nfVcbYF.md.jpg', name: 'Países Bajos' },
-  { image: 'https://iili.io/nfVllTb.md.jpg', name: 'Bélgica' },
   { image: 'https://iili.io/nfV0oS1.md.jpg', name: 'Francia' },
+  { image: './italia.svg', name: 'Italia' },
   { image: 'https://iili.io/nfVGclV.md.jpg', name: 'Portugal' },
 ];
 
 const purchasingFormats = [
   { label: 'Compramos por palets', icon: Package2 },
-  { label: 'Lotes', icon: Boxes },
   { label: 'Camiones completos', icon: Truck },
 ];
 
@@ -314,9 +318,11 @@ function Hero() {
                   {slide.title}
                 </span>
               </h1>
-              <p className="mt-3 text-[1.2rem] font-semibold uppercase tracking-[0.18em] text-sky-100/90 md:text-[1.35rem]">
-                {slide.subtitle}
-              </p>
+              {slide.subtitle && (
+                <p className="mt-3 text-[1.2rem] font-semibold uppercase tracking-[0.18em] text-sky-100/90 md:text-[1.35rem]">
+                  {slide.subtitle}
+                </p>
+              )}
               {slide.text && (
                 <p className="mt-6 max-w-2xl text-lg font-semibold leading-8 text-white drop-shadow-[0_2px_10px_rgba(2,6,23,0.55)] md:text-xl md:leading-9">
                   {slide.text}
@@ -361,7 +367,7 @@ function Hero() {
                   })}
               </div>
 
-              <p className="outlet-overview-footer">Compramos por palets · Lotes · Camiones completos</p>
+              <p className="outlet-overview-footer">Compramos por palets · Camiones completos</p>
               <p className="outlet-overview-footer outlet-overview-footer-secondary">Grandes cantidades · Mejores precios</p>
             </motion.div>
           )}

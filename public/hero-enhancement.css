@@ -71,7 +71,7 @@
 
 .outlet-country-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
 }
 
@@ -110,7 +110,7 @@
 
 .outlet-format-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1.35rem;
   padding: 1rem 0;
   border-top: 1px solid rgba(255, 255, 255, .32);
@@ -154,7 +154,7 @@
 .outlet-overview-footer {
   margin: 1rem 0 0;
   color: #fff;
-  font-size: .94rem;
+  font-size: 1.08rem;
   font-weight: 900;
   line-height: 1.35;
   letter-spacing: .08em;
@@ -179,7 +179,7 @@
   }
 
   .outlet-country-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .outlet-country-flag {
@@ -197,12 +197,8 @@
     background-position: 72% center !important;
   }
 
-  .outlet-country:nth-child(3) {
+  .outlet-country:nth-child(2n) {
     border-right: 0;
-  }
-
-  .outlet-country:nth-child(-n+3) {
-    border-bottom: 1px solid rgba(255, 255, 255, .22);
   }
 
   .outlet-format {
@@ -223,7 +219,7 @@
   }
 
   .outlet-overview-footer {
-    font-size: .76rem;
+    font-size: .88rem;
   }
 
   .outlet-overview-footer-secondary {
